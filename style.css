@@ -11,15 +11,15 @@ body {
 
 /* A container for your content */
 .card {
-    display: flex;
-    flex-direction: column; /* This stacks your items vertically */
-    align-items: center;    /* This centers them horizontally */
     background: white;
-    padding: 2rem;
+    padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 400px;
+    max-width: 800px; /* Increased from 400px to fit images */
+    width: 90%;      /* Good for mobile screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -48,6 +48,7 @@ p {
 }
 
 button {
+    margin-top: 30px;
     background-color: #6c63ff;
     color: white;
     border: none;
@@ -60,4 +61,95 @@ button {
 button:hover {
     background-color: #5146d9;
     transform: scale(1.05);
+}
+
+.gallery {
+    display: grid;
+    /* This creates 3 columns that automatically adjust */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px; /* Space between photos */
+    margin-top: 20px;
+    width: 100%;
+}
+
+.gallery img {
+    width: 100%;      /* Makes image fit the grid column */
+    height: 100px;    /* Keeps them all the same height */
+    object-fit: cover; /* Crops them nicely so they don't look squished */
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1); /* Zooms in slightly when you hover! */
+    cursor: pointer;
+}
+
+/* The Modal background */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  
+  /* ADD THESE THREE LINES FOR CENTERING */
+  display: none; /* This will be changed to 'flex' by JS */
+  justify-content: center; /* Horizontal center */
+  align-items: center;     /* Vertical center */
+}
+
+/* The Large Image */
+.modal-content {
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border: 3px solid white;
+  /* REMOVE margin-top: 5% if it was there */
+  margin: 0; 
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Shrink the image so it doesn't take over the whole screen */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 70%;  /* Smaller width */
+  max-height: 70%; /* Smaller height */
+  border: 3px solid white;
+}
+
+/* Arrow buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.6s ease;
+  user-select: none;
+}
+
+.next { right: 50px; }
+.prev { left: 50px; }
+
+.prev:hover, .next:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
