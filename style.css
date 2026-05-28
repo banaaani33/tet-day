@@ -27,6 +27,13 @@ h1 {
     margin-bottom: 10px;
 }
 
+p {
+    text-align: left;       /* This moves the text to the left */
+    width: 100%;            /* This ensures the paragraph takes up the full width */
+    margin-left: 0;         /* Removes any extra space on the left */
+    margin: 0 0 10px 0;
+}
+
 .languages {
     margin: 20px 0;
 }
